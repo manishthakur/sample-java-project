@@ -1,11 +1,17 @@
 package org.lambdas;
 
+import com.sun.xml.internal.bind.v2.runtime.reflect.opt.Const;
+
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.function.Consumer;
 import java.util.function.Predicate;
 
-public class UnitOneExercise {
+public class StandardFunctionalInterfaceExample {
+
+    //TODO
+    // Check all functional interface
 
     public static void main(String[] args) {
         List<Person> personList = Arrays.asList(
@@ -20,17 +26,17 @@ public class UnitOneExercise {
         printAll(personList);
 
         // Step 3. method to print all tha have last name beginning with C
-        printConditionally(personList, p -> p.getLastName().startsWith("T"));
-        printConditionally(personList, p -> p.getLastName().startsWith("K"));
-        printConditionally(personList, p -> p.getFirstName().startsWith("N"));
+        printConditionally(personList, p -> p.getLastName().startsWith("T"), p -> System.out.println(p));
+        printConditionally(personList, p -> p.getLastName().startsWith("K"), p -> System.out.println(p.getFirstName()));
+        printConditionally(personList, p -> p.getFirstName().startsWith("N"), p -> System.out.println(p.getLastName()));
     }
 
     private static void printAll(List<Person> personList) {
         personList.forEach(System.out::println);
     }
 
-    private static void printConditionally(List<Person> personList, Predicate<Person> predicate) {
-        personList.stream().filter(predicate::test).forEach(System.out::println);
+    private static void printConditionally(List<Person> personList, Predicate<Person> predicate, Consumer<Person> consumer) {
+        personList.stream().filter(predicate::test).forEach((p) -> consumer.accept(p));
     }
 
     @FunctionalInterface
