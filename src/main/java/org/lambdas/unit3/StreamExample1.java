@@ -4,6 +4,7 @@ import org.lambdas.Person;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class StreamExample1 {
 
@@ -16,5 +17,12 @@ public class StreamExample1 {
         personList.stream()
                 .filter(p -> p.getLastName().startsWith("T"))
                 .forEach(p -> System.out.println(p.getFirstName()));
+
+        long count = personList.stream()
+                .filter(p -> p.getLastName().startsWith("T"))
+                .count();
+
+        System.out.println(count);
+        Stream<Person> stream = personList.stream();
     }
 }
