@@ -1,4 +1,4 @@
-package org.lambdas;
+/*package org.lambdas;
 
 import com.sun.xml.internal.bind.v2.runtime.reflect.opt.Const;
 
@@ -44,3 +44,4 @@ public class StandardFunctionalInterfaceExample {
         boolean test(Person p);
     }
 }
+*/
